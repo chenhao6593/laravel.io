@@ -27,15 +27,15 @@ class User extends Entity implements AuthenticatableContract, CanResetPasswordCo
      *
      * @var array
      */
-    protected $fillable = ['email', 'name', 'github_url', 'github_id', 'image_url', 'is_banned', 'ip'];
+    protected $fillable = ['email', 'name', 'password', 'image_url', 'is_banned', 'ip'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = ['github_id', 'email', 'remember_token'];
-
+    protected $hidden = ['password', 'remember_token'];
+    
     /**
      * The attributes that should be mutated to dates.
      *
@@ -44,7 +44,6 @@ class User extends Entity implements AuthenticatableContract, CanResetPasswordCo
     protected $dates = ['deleted_at'];
 
     protected $validationRules = [
-        'github_id' => 'unique:users,github_id,<id>',
         'email' => 'required|email|unique:users,email,<id>',
         'name' => 'required|alpha_num|unique:users,name,<id>',
     ];

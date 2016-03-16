@@ -12,18 +12,29 @@ Route::group(['domain' => 'forums.laravel.io'], function() {
 });
 
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+
 Route::get('rss', 'HomeController@rss');
 
 // Auth
 Route::group(['namespace' => 'Auth'], function () {
-    Route::get('login', ['as' => 'login', 'uses' => 'AuthController@login']);
+    /* Route::get('login', ['as' => 'login', 'uses' => 'AuthController@login']);
     Route::get('auth/github', 'AuthController@authByGithub');
     Route::get('signup', ['as' => 'signup', 'uses' => 'AuthController@signup']);
     Route::post('signup', 'AuthController@register');
     Route::get('logout', ['as' => 'logout', 'uses' => 'AuthController@logout']);
 
     Route::get('confirm-email/{confirmation_code}', ['as' => 'auth.confirm', 'uses' => 'AuthController@confirmEmail']);
+    Route::get('resend-email-confirmation', ['as' => 'auth.reconfirm', 'uses' => 'AuthController@resendEmailConfirmation']); */
+    
+    Route::get('auth/login', ['as' => 'login', 'uses' => 'AuthController@login']);
+    Route::post('auth/login', 'AuthController@postLogin');
+    Route::get('auth/register', ['as' => 'signup', 'uses' => 'AuthController@signup']);
+    Route::post('auth/register', 'AuthController@postRegister');
+    Route::get('logout', ['as' => 'logout', 'uses' => 'AuthController@logout']);
+    
+    Route::get('confirm-email/{confirmation_code}', ['as' => 'auth.confirm', 'uses' => 'AuthController@confirmEmail']);
     Route::get('resend-email-confirmation', ['as' => 'auth.reconfirm', 'uses' => 'AuthController@resendEmailConfirmation']);
+    
 });
 
 // Users
