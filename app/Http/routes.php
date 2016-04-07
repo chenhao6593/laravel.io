@@ -1,7 +1,7 @@
 <?php
 
 // Home
-Route::group(['domain' => 'wiki.laravel.io'], function() {
+/* Route::group(['domain' => 'wiki.laravel.io'], function() {
     Route::get('{wildcard}', 'HomeController@redirectToMainWebsite');
 });
 Route::group(['domain' => 'forum.laravel.io'], function() {
@@ -9,7 +9,7 @@ Route::group(['domain' => 'forum.laravel.io'], function() {
 });
 Route::group(['domain' => 'forums.laravel.io'], function() {
     Route::get('{wildcard}', 'HomeController@redirectToMainWebsite');
-});
+}); */
 
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 
