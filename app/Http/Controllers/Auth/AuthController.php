@@ -1,7 +1,6 @@
 <?php
 namespace Lio\Http\Controllers\Auth;
 
-use Validator;
 use Lio\Accounts\User;
 use Lio\Accounts\UserCreator;
 use Lio\Accounts\UserCreatorListener;
@@ -14,6 +13,7 @@ use Request;
 use Input;
 use Session;
 use Auth;
+use Validator;
 
 class AuthController extends Controller implements UserCreatorListener
 {
@@ -126,28 +126,29 @@ class AuthController extends Controller implements UserCreatorListener
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    /*
-     * public function register()
-     * {
-     *
-     * $validator = Validator::make(Input::only('g-recaptcha-response'), [
-     * 'g-recaptcha-response' => 'required|captcha'
-     * ]);
-     *
-     * if ($validator->fails()) {
-     * return redirect()->route('signup')
-     * ->exceptInput('g-recaptcha-response')
-     * ->withErrors($validator->errors());
-     * }
-     *
-     * //$data = Session::get('githubData');
-     * $data['ip'] = Request::ip();
-     * $data['name'] = Input::get('name');
-     * $data['email'] = Input::get('email');
-     *
-     * return $this->userCreator->create($this, $data);
-     * }
-     */
+    
+     public function register()
+     {
+     
+        /* $validator = Validator::make(Input::only('g-recaptcha-response'), [
+        'g-recaptcha-response' => 'required|captcha'
+       ]);
+     
+       if ($validator->fails()) {
+       return redirect()->route('signup')
+       ->exceptInput('g-recaptcha-response')
+       ->withErrors($validator->errors());
+       } */
+      
+       //$data = Session::get('githubData');
+       $data['ip'] = Request::ip();
+       $data['name'] = Input::get('name');
+       $data['email'] = Input::get('email');
+       $data['password'] = bcrypt(Input::get('password'));
+      
+       return $this->userCreator->create($this, $data);
+       }
+     
     
     /**
      * Confirms a user's email address

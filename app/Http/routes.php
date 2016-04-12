@@ -29,7 +29,7 @@ Route::group(['namespace' => 'Auth'], function () {
     Route::get('auth/login', ['as' => 'login', 'uses' => 'AuthController@login']);
     Route::post('auth/login', 'AuthController@postLogin');
     Route::get('auth/register', ['as' => 'signup', 'uses' => 'AuthController@signup']);
-    Route::post('auth/register', 'AuthController@postRegister');
+    Route::post('auth/register', 'AuthController@register');
     Route::get('logout', ['as' => 'logout', 'uses' => 'AuthController@logout']);
     
     Route::get('confirm-email/{confirmation_code}', ['as' => 'auth.confirm', 'uses' => 'AuthController@confirmEmail']);
