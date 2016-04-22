@@ -7,10 +7,10 @@
     <nav>
         <ul>
             <li>
-                <a class="{{ Request::is('forum*') ? 'active' : null }}" href="{{ action('Forum\ForumThreadsController@getIndex') }}">Forum</a>
+                <a class="{{ Request::is('forum*') ? 'active' : null }}" href="{{ action('Forum\ForumThreadsController@getIndex') }}">外汇圈</a>
             </li>
             <li>
-                <a href="https://larajobs.com?partner=28">Jobs</a>
+                <a href="https://larajobs.com?partner=28">EA圈</a>
             </li>
             <li>
                 <a class="{{ Request::is('chat*') ? 'active' : null }}" href="{{ action('ChatController@getIndex') }}">Live Chat</a>
@@ -32,9 +32,10 @@
     <ul class="user-navigation">
         @if (Auth::check())
             <li><a href="{{ route('user', Auth::user()->name) }}">{{ Auth::user()->name }}</a></li>
-            <li><a class="button" href="{{ route('logout') }}">Logout</a></li>
+            <li><a class="button" href="{{ route('logout') }}">注销</a></li>
         @else
-            <li><a class="button" href="{{ route('login') }}">Login with GitHub</a></li>
+            <li><a class="button" href="{{ route('login') }}">登 录</a></li>
+            <li><a class="button" href="{{ route('signup') }}">注 册</a></li>
         @endif
     </ul>
 </header>

@@ -9,6 +9,7 @@
 
     @section('styles')
       <link rel="stylesheet" href="{{ asset('stylesheets/app.css') }}?v=2">
+      
     @show
 
     <script src="{{ asset('javascripts/vendor/custom.modernizr.js') }}"></script>
